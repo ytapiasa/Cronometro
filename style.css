@@ -20,3 +20,13 @@ hr{
 p{
     color: rgb(255, 0, 0);
 }
+
+
+
+.play-pause-btn{
+    display: block;
+    border-radius: 1px;
+    width: 24px;
+    height: 24px;
+
+}
