@@ -9,13 +9,16 @@
 <body>
     <h1>CRONOMETRO</h1>
 
-    <section class="empalme">
-        <div class="crono1">
+    <section class="empalme" id="container">
+        <div class="crono1" id="cro1">
             <p>Cronometro 1</p>
         </div>
-        <div class="crono2">
+        <div class="crono2" id="cro2">
             <p>Cronometro 2</p>
         </div>
+        <button class="inicio-pausa" id="inicio-pausa" onclick="togglePlayPause()">
+            <span id="play-icon">>||</span>
+        </button>
     </section>
     <hr>
     <section class="tiempos">
