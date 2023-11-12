@@ -1,13 +1,13 @@
-body{
+body {
     background-color: black;
 }
 
-h1{
+h1 {
     color: rgb(255, 0, 0);
     text-align: center;
 }
 
-.empalme{
+.empalme {
     text-align: center;
     position: relative;
     display: flex;
@@ -16,21 +16,29 @@ h1{
     margin: 15px;
 }
 
-.crono1{
+.crono1 {
     width: 45%;
     height: 200px;
 }
 
-.crono2{
+#cronometro1Display {
+    color: rgb(255, 0, 0);
+}
+
+#cronometro2Display {
+    color: rgb(255, 0, 0);
+}
+
+.crono2 {
     width: 45%;
     height: 200px;
 }
 
-hr{
+hr {
     color: yellow;
 }
 
-.tiempos{
+.tiempos {
     text-align: center;
     position: relative;
     display: flex;
@@ -39,32 +47,31 @@ hr{
     margin: 15px;
 }
 
-.time1{
+.time1 {
     width: 30%;
     height: 200px;
 }
 
-.time2{
+.time2 {
     width: 30%;
     height: 200px;
 }
 
-.time3{
+.time3 {
     width: 30%;
     height: 200px;
 }
 
-p{
+p {
     color: rgb(255, 0, 0);
 }
 
-.play-pause-btn{
+.inicio-pausa {
     display: block;
     width: 24px;
     height: 24px;
-
 }
 
-hr{
+hr {
     color: chartreuse;
 }
