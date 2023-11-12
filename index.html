@@ -12,18 +12,31 @@
     <section class="empalme" id="container">
         <div class="crono1" id="cro1">
             <p>Cronometro 1</p>
+            <input type="number" id="cronometro1" placeholder="Segundos">
+            <div id="cronometro1Display">Tiempo restante en cronómetro 1: </div>
         </div>
         <div class="crono2" id="cro2">
             <p>Cronometro 2</p>
+            <input type="number" id="cronometro2" placeholder="Segundos">
+            <div id="cronometro2Display">Tiempo restante en cronómetro 2: </div>
         </div>
         <button class="inicio-pausa" id="inicio-pausa" onclick="togglePlayPause()">
-            <span id="play-icon">>||</span>
+            <span id="play-icon">
+                <!-- Play Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </span>
+            <span id="pause-icon">
+                <!-- Pause Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M6 4h4v16H6zm8 0h4v16h-4z"/>
+                </svg>
+            </span>
         </button>
     </section>
     <hr>
-
-    
-    <section class="tiempos">
+    <section class="tiempos" id="tiemposSection">
         <div class="time1">
             <p>Tiempo 1</p>
         </div>
@@ -33,21 +46,6 @@
         <div class="time3">
             <p>Tiempo 3</p>
         </div>
-        <button class="play-pause-btn" onclick="togglePlayPause()">
-            <span id="play-icon">
-              <!-- Play Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </span>
-            <span id="pause-icon">
-              <!-- Pause Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M6 4h4v16H6zm8 0h4v16h-4z"/>
-              </svg>
-            </span>
-          </button>
-        
     </section>
 
     <script src="script.js"></script>
