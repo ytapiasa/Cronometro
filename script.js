@@ -1,42 +1,75 @@
-let tiempoRestante1;
-let tiempoRestante2;
-let intervalo1;
-let intervalo2;
+let cronometros = [
+    { running: false, segundos: 0, minutos: 0, microsegundos: 0, intervalId: null, mensajeId: "mensajeCronometro1" },
+    { running: false, segundos: 0, minutos: 0, microsegundos: 0, intervalId: null, mensajeId: "mensajeCronometro2" }
+];
 
-function togglePlayPause() {
-    const inputCronometro1 = document.getElementById("cronometro1");
-    const inputCronometro2 = document.getElementById("cronometro2");
+function iniciar(cronometro) {
+    if (cronometro) {
+        cronometro.intervalId = setInterval(function () {
+            cronometro.microsegundos += 100;
+            if (cronometro.microsegundos === 1000) {
+                cronometro.microsegundos = 0;
+                cronometro.segundos++;
+                if (cronometro.segundos === 60) {
+                    cronometro.segundos = 0;
+                    cronometro.minutos++;
+                }
+            }
+            actualizarCronometro(cronometro);
 
-    tiempoRestante1 = parseInt(inputCronometro1.value, 10);
-    tiempoRestante2 = parseInt(inputCronometro2.value, 10);
-
-    if (!isNaN(tiempoRestante1) && tiempoRestante1 > 0) {
-        intervalo1 = setInterval(actualizarCronometro1, 1000);
-    }
-
-    if (!isNaN(tiempoRestante2) && tiempoRestante2 > 0) {
-        intervalo2 = setInterval(actualizarCronometro2, 1000);
+            if (cronometro.segundos >= cronometro.tiempoLimite) {
+                detenerCronometro(cronometro);
+                mostrarMensaje("En Pausa", cronometro.mensajeId);
+            }
+        }, 100);
+        cronometro.running = true;
+    } else {
+        alert("No se proporcionó un cronómetro válido.");
     }
 }
 
-function actualizarCronometro1() {
-    const display1 = document.getElementById("cronometro1Display");
-    display1.textContent = `Tiempo restante en cronómetro 1: ${tiempoRestante1} segundos`;
+function iniciarCronometro() {
+    const tiempoInput = document.getElementById('tiempoInput').value;
+    if (!tiempoInput || isNaN(tiempoInput) || tiempoInput <= 0) {
+        alert("Por favor, ingrese un tiempo válido en segundos.");
+        return;
+    }
 
-    if (tiempoRestante1 <= 0) {
-        clearInterval(intervalo1);
+    const cronometroInactivo = cronometros.find(cronometro => !cronometro.running);
+
+    if (cronometroInactivo) {
+        cronometroInactivo.tiempoLimite = tiempoInput;
+        iniciar(cronometroInactivo);
     } else {
-        tiempoRestante1--;
+        alert("Ambos cronómetros ya están en uso. Detén uno antes de comenzar otro.");
     }
 }
 
-function actualizarCronometro2() {
-    const display2 = document.getElementById("cronometro2Display");
-    display2.textContent = `Tiempo restante en cronómetro 2: ${tiempoRestante2} segundos`;
+function detenerCronometro(cronometro) {
+    clearInterval(cronometro.intervalId);
+    cronometro.running = false;
+}
 
-    if (tiempoRestante2 <= 0) {
-        clearInterval(intervalo2);
-    } else {
-        tiempoRestante2--;
-    }
+function actualizarCronometro(cronometro) {
+    const cronometroIndex = cronometros.indexOf(cronometro) + 1;
+    const tiempoFormateado = `${cronometro.minutos < 10 ? '0' : ''}${cronometro.minutos}:${cronometro.segundos < 10 ? '0' : ''}${cronometro.segundos}:${cronometro.microsegundos < 10 ? '00' : cronometro.microsegundos < 100 ? '0' : ''}${cronometro.microsegundos}`;
+    document.querySelector(`#cronometro${cronometroIndex}`).innerHTML = tiempoFormateado;
+}
+
+function mostrarMensaje(mensaje, mensajeId) {
+    const mensajes = document.querySelectorAll('.mensaje');
+    mensajes.forEach(m => m.innerHTML = '');
+    document.getElementById(mensajeId).innerHTML = mensaje;
+}
+
+function reset() {
+    cronometros.forEach(cronometro => {
+        detenerCronometro(cronometro);
+        cronometro.segundos = 0;
+        cronometro.minutos = 0;
+        cronometro.microsegundos = 0;
+        cronometro.tiempoLimite = 0;
+        actualizarCronometro(cronometro);
+        mostrarMensaje("Ejecutándose", cronometro.mensajeId);
+    });
 }
