@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: black;
     text-align: center;
     margin: 50px;
@@ -48,4 +48,50 @@ h2{
 button{
     background-color: rgb(255, 0, 0);
     color: white;
-}
+} */
+
+
+body {
+    background-image: url();
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+  }
+
+  #timers {
+    margin-top: 20px;
+  }
+
+  .timer {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative; /* Añadido para el posicionamiento relativo */
+    display: inline-block;
+  }
+
+  .timer-controls {
+    margin-top: 5px;
+  }
+
+  input, button {
+    background-color: #00FF00; /* Verde al estilo matrix */
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  input {
+    color: white;
+  }
+
+  p {
+    font-size: 24px;
+  }
+
+  .status {
+    position: absolute;
+    bottom: -20px; /* Ajustar según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+  }
