@@ -4,12 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronómetros</title>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> 
     
 </head>
 <body>
-
-<h1>Cronómetros</h1>
+    <h1>CRONOMETROS</h1>
+    <div id="timers">
+      <div class="timer">
+        <div class="status" id="status1"></div>
+        <input type="number" id="timer1" placeholder="Tiempo en segundos" step="1">
+        <div class="timer-controls">
+          <button onclick="startTimer(1)">Iniciar</button>
+          <button onclick="pauseTimer(1)">Pausar</button>
+          <button onclick="resetTimer(1)">Reiniciar</button>
+        </div>
+        <p id="display1">0.000</p>
+      </div>
+  
+      <div class="timer">
+        <div class="status" id="status2"></div>
+        <input type="number" id="timer2" placeholder="Tiempo en segundos" step="1">
+        <div class="timer-controls">
+          <button onclick="startTimer(2)">Iniciar</button>
+          <button onclick="pauseTimer(2)">Pausar</button>
+          <button onclick="resetTimer(2)">Reiniciar</button>
+        </div>
+        <p id="display2">0.000</p>
+      </div>
+    </div>
+  
+    <h1>Tiempos</h1>
+    <div id="timers">
+      <div class="timer">
+        <div class="status" id="status3"></div>
+        <input type="number" id="timer3" placeholder="Tiempo en segundos" step="1">
+        <div class="timer-controls">
+          <button onclick="startTimer(3)">Iniciar</button>
+          <button onclick="pauseTimer(3)">Pausar</button>
+          <button onclick="resetTimer(3)">Reiniciar</button>
+        </div>
+        <p id="display3">0.000</p>
+      </div>
+  
+      <div class="timer">
+        <div class="status" id="status4"></div>
+        <input type="number" id="timer4" placeholder="Tiempo en segundos" step="1">
+        <div class="timer-controls">
+          <button onclick="startTimer(4)">Iniciar</button>
+          <button onclick="pauseTimer(4)">Pausar</button>
+          <button onclick="resetTimer(4)">Reiniciar</button>
+        </div>
+        <p id="display4">0.000</p>
+      </div>
+  
+      <div class="timer">
+        <div class="status" id="status5"></div>
+        <input type="number" id="timer5" placeholder="Tiempo en segundos" step="1">
+        <div class="timer-controls">
+          <button onclick="startTimer(5)">Iniciar</button>
+          <button onclick="pauseTimer(5)">Pausar</button>
+          <button onclick="resetTimer(5)">Reiniciar</button>
+        </div>
+        <p id="display5">0.000</p>
+      </div>
+    </div>
+<!-- <h1>Cronómetros</h1>
 <div class="cronometro-container">
     <div>
         <h2>Cronómetro 1</h2>
@@ -24,7 +83,7 @@
 <div class="mensaje2" id="mensajeCronometro2"></div>
 <input type="number" id="tiempoInput" placeholder="Ingrese el tiempo en segundos">
 <button onclick="iniciarCronometro()">Play</button>
-<button onclick="reset()">Reiniciar</button>
+<button onclick="reset()">Reiniciar</button> -->
 
 <script src="script.js"></script>
 </body>
