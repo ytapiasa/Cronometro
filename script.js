@@ -1,3 +1,5 @@
+
+/*
 let cronometros = [
     { running: false, segundos: 0, minutos: 0, microsegundos: 0, intervalId: null, mensajeId: "mensajeCronometro1" },
     { running: false, segundos: 0, minutos: 0, microsegundos: 0, intervalId: null, mensajeId: "mensajeCronometro2" }
@@ -73,3 +75,61 @@ function reset() {
         mostrarMensaje("Ejecutándose", cronometro.mensajeId);
     });
 }
+
+*/
+
+
+let timers = [];
+    let statuses = [];
+
+    function startTimer(timerNumber) {
+      const input = document.getElementById(`timer${timerNumber}`);
+      const display = document.getElementById(`display${timerNumber}`);
+      const status = document.getElementById(`status${timerNumber}`);
+
+      if (timers[timerNumber - 1]) {
+        clearInterval(timers[timerNumber - 1]);
+      }
+
+      let totalTime = input.value || 0;
+      let startTime = new Date().getTime();
+
+      status.textContent = 'En Ejecución...';
+
+      timers[timerNumber - 1] = setInterval(function() {
+        let currentTime = new Date().getTime();
+        let elapsedTime = (currentTime - startTime) / 1000;
+
+        if (elapsedTime <= totalTime) {
+          display.textContent = elapsedTime.toFixed(3);
+        } else {
+          clearInterval(timers[timerNumber - 1]);
+          startNextTimer(timerNumber);
+        }
+      }, 1);
+    }
+
+    function startNextTimer(timerNumber) {
+      const status = document.getElementById(`status${timerNumber}`);
+      status.textContent = ''; // Limpiar el mensaje de estado
+
+      if (timerNumber < 5) {
+        setTimeout(() => startTimer(timerNumber + 1), 0);
+      }
+    }
+
+    function pauseTimer(timerNumber) {
+      clearInterval(timers[timerNumber - 1]);
+      const status = document.getElementById(`status${timerNumber}`);
+      status.textContent = 'En Pausa...';
+    }
+
+    function resetTimer(timerNumber) {
+      clearInterval(timers[timerNumber - 1]);
+      const input = document.getElementById(`timer${timerNumber}`);
+      const display = document.getElementById(`display${timerNumber}`);
+      const status = document.getElementById(`status${timerNumber}`);
+      input.value = '';
+      display.textContent = '0.000';
+      status.textContent = ''; // Limpiar el mensaje de estado
+    }
