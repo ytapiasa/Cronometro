@@ -111,7 +111,7 @@ let timers = [];
 
     function startNextTimer(timerNumber) {
       const status = document.getElementById(`status${timerNumber}`);
-      status.textContent = ''; // Limpiar el mensaje de estado
+      status.textContent = '';
 
       if (timerNumber < 5) {
         setTimeout(() => startTimer(timerNumber + 1), 0);
@@ -131,5 +131,5 @@ let timers = [];
       const status = document.getElementById(`status${timerNumber}`);
       input.value = '';
       display.textContent = '0.000';
-      status.textContent = ''; // Limpiar el mensaje de estado
+      status.textContent = '';
     }
